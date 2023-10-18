@@ -18,6 +18,7 @@ import iconTwitch from '../assets/images/icon-twitch.png';
 import iconCoinbase from '../assets/images/icon-coinbase.png';
 
 import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
+import { etherspotMode } from '../App';
 
 const chainConfig = {
   chainNamespace: CHAIN_NAMESPACES.EIP155,
@@ -242,7 +243,9 @@ const SignIn = ({ onWeb3ProviderSet, onWeb3AuthInstanceSet }: SignInProps) => {
         clientId: web3AuthClientId,
         chainConfig: {
           chainNamespace: CHAIN_NAMESPACES.EIP155,
-          chainId: process.env.REACT_APP_CHAIN_ID_HEX,
+          chainId: etherspotMode !== 'etherspot-prime'
+            ? process.env.REACT_APP_CHAIN_ID_HEX
+            : process.env.REACT_APP_WEB3AUTH_CHAIN_ID_HEX,
           rpcTarget: `https://polygon-mainnet.infura.io/v3/${process.env.REACT_APP_INFURA_ID}`,
         },
         storageKey: 'local',

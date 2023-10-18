@@ -8,6 +8,8 @@ import { useAccount, useDisconnect } from 'wagmi';
 import SignIn from './components/SignIn';
 
 const chainId = 1;
+export const etherspotMode='etherspot-prime'
+
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -165,6 +167,7 @@ const App = () => {
             <ToggleThemeButton onClick={() => setUseDashboardTheme(!useDashboardTheme)}>Toggle theme</ToggleThemeButton>
             <Etherspot
               provider={connectedProvider}
+              etherspotMode='etherspot-prime'
               chainId={chainId}
               themeOverride={themeOverride}
               onLogout={async () => {
